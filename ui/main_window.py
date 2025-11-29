@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import sys
 import time
-from PyQt5.QtWidgets import (QMainWindow, QApplication, QWidget, QVBoxLayout, QHBoxLayout,
+from PyQt5.QtWidgets import (QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
                              QLabel, QPushButton, QTabWidget, QScrollArea, QGridLayout,
-                             QMessageBox, QFileDialog, QComboBox, QSlider, QSpinBox,
-                             QFrame, QGroupBox, QSizePolicy)
+                             QComboBox, QSlider, QSpinBox, QFrame, QGroupBox, QSizePolicy)
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QIcon
 from loguru import logger

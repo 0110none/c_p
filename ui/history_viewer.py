@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 import cv2
 import csv
 
-from core.database import FaceDatabase, FaceLogEntry
+from core.database import FaceLogEntry
 from core.utils import numpy_to_pixmap
 
 
@@ -44,7 +44,7 @@ class HistoryViewer(QWidget):
         if export_dir:
             export_path = Path(export_dir).expanduser()
         else:
-            export_path = Path.home() / 'history_exports'
+            export_path = Path.home() / '历史记录导出'
 
         try:
             export_path.mkdir(parents=True, exist_ok=True)
@@ -233,7 +233,7 @@ class HistoryViewer(QWidget):
                 try:
                     timestamp = float(entry.timestamp)
                     time_str = datetime.fromtimestamp(timestamp).strftime("%Y-%m-%d %H:%M:%S")
-                    item_text = f"{time_str} - {entry.face_name} @ {entry.camera_name}"
+                    item_text = f"{time_str} - {entry.face_name} 出现在 {entry.camera_name}"
                     self.history_list.addItem(item_text)
                     self.history_list.item(self.history_list.count() - 1).setData(Qt.UserRole, entry)
                 except Exception as e:
@@ -250,7 +250,7 @@ class HistoryViewer(QWidget):
 
         default_path = self.export_dir
         default_path.mkdir(parents=True, exist_ok=True)
-        filename = default_path / f"history_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
+        filename = default_path / f"历史记录_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
 
         path, _ = QFileDialog.getSaveFileName(
             self,
@@ -265,7 +265,7 @@ class HistoryViewer(QWidget):
             with open(path, 'w', newline='', encoding='utf-8-sig') as csvfile:
                 writer = csv.writer(csvfile)
                 writer.writerow([
-                    'ID', '时间', '摄像头', '摄像头ID', '人脸', '年龄', '性别', '置信度', '截图路径'
+                    '编号', '时间', '摄像头名称', '摄像头ID', '人脸名称', '年龄', '性别', '置信度', '截图路径'
                 ])
                 for entry in self.current_entries:
                     writer.writerow([
