@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 import cv2
 import csv
 
-from core.database import FaceDatabase, FaceLogEntry
+from core.database import FaceLogEntry
 from core.utils import numpy_to_pixmap
 
 

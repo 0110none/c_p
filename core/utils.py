@@ -5,7 +5,8 @@ import cv2
 import numpy as np
 from loguru import logger
 from PIL import ImageFont, ImageDraw, Image
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QImage, QPixmap
 import time
 
 
@@ -104,9 +105,6 @@ def _load_chinese_font() -> ImageFont.ImageFont:
 def numpy_to_pixmap(image: np.ndarray) -> "QPixmap":
     """将 numpy 图像数据转换为 QPixmap（用于 PyQt 显示）"""
     try:
-        from PyQt5.QtGui import QImage, QPixmap
-        from PyQt5.QtCore import Qt
-
         if image is None:
             return QPixmap()
 

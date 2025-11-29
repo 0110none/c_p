@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from PyQt5.QtWidgets import (QDialog, QVBoxLayout, QHBoxLayout, QListWidget, QPushButton,
-                             QLabel, QCheckBox, QMessageBox)
+                             QCheckBox, QMessageBox)
 from PyQt5.QtCore import Qt
-from loguru import logger
 import time
 
 
