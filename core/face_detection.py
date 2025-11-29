@@ -1,13 +1,9 @@
-import os
 import cv2
 import numpy as np
-import insightface
 from insightface.app import FaceAnalysis
-from insightface.data import get_image as ins_get_image
 from loguru import logger
-from typing import List, Dict, Tuple, Optional
+from typing import List, Tuple, Optional
 from dataclasses import dataclass
-from PIL import Image
 from pathlib import Path
 import time
 # -*- coding: utf-8 -*-

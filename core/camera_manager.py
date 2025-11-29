@@ -1,13 +1,12 @@
 import cv2
 import numpy as np
-from typing import List, Dict, Optional, Tuple
+from typing import Dict, List, Optional
 from dataclasses import dataclass
 from loguru import logger
 import time
 import threading
 import queue
 import yaml
-from pathlib import Path
 # -*- coding: utf-8 -*-
 # 摄像头配置数据结构
 @dataclass
