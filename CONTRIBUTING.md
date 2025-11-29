@@ -1,158 +1,141 @@
-# Contribution Guidelines for Multi-Camera Face Tracker
+# 多摄像头人脸跟踪项目贡献指南
 
-Thank you for considering contributing to our project! This document outlines the process for contributing to the Multi-Camera Face Tracker system.
+感谢你愿意为本项目贡献力量！本文档说明如何参与 Multi-Camera Face Tracker 的开发与协作流程。
 
-## 🏁 Getting Started
+## 🏁 开始之前
 
-### Prerequisites
-- Python 3.8+ installed
-- Git version control
-- Basic understanding of:
-  - Computer Vision (OpenCV)
-  - Face Recognition (InsightFace)
-  - GUI Development (PyQt5)
+### 前置要求
+- 已安装 Python 3.8+
+- Git 版本控制工具
+- 具备以下基础知识：
+  - 计算机视觉（OpenCV）
+  - 人脸识别（InsightFace）
+  - GUI 开发（PyQt5）
 
-### Development Environment Setup
+### 开发环境准备
 
-1. **Fork the Repository**
+1. **Fork 仓库并克隆**
    ```bash
    git clone https://github.com/AarambhDevHub/multi-cam-face-tracker.git
    cd multi-cam-face-tracker
    ```
 
-2. **Set Up Virtual Environment**
+2. **创建虚拟环境**
     ```bash
     python -m venv .venv
     source .venv/bin/activate  # Linux/MacOS
     .venv\Scripts\activate    # Windows
     ```
 
-3. **Install Dependencies**
+3. **安装依赖**
     ```bash
     pip install -r requirements.txt
     pre-commit install
     ```
 
-4. **Branch Naming Convention**
+4. **分支命名规范**
     ```
-    feature/[short-description]  # For new features
-    bugfix/[issue-number]       # For bug fixes
-    docs/[topic]               # For documentation
+    feature/[short-description]  # 新功能
+    bugfix/[issue-number]       # 缺陷修复
+    docs/[topic]               # 文档修改
     ```
 
-## 🛠 Development Workflow
-Code Structure Overview
-```
-├── core/          # Business logic
+## 🛠 开发流程
+代码结构示意：
+``` 
+├── core/          # 业务逻辑
 │   ├── face_detection.py
 │   ├── camera_manager.py
 │   └── ...
-├── ui/            # User interface
-├── config/        # Configuration files
-├── tests/         # Unit and integration tests
-└── main.py        # Entry point
+├── ui/            # 图形界面
+├── config/        # 配置文件
+├── tests/         # 单元与集成测试
+└── main.py        # 入口
 ```
 
-### Making Changes
-1. Create a Feature Branch
+### 进行修改
+1. 创建分支
    ```bash
    git checkout -b feature/your-feature-name
    ```
 
-2. Implement Your Changes
-    - Follow PEP 8 style guide
-    - Include type hints for all functions
-    - Add docstrings for public methods
+2. 实施改动
+    - 遵循 PEP 8
+    - 所有函数添加类型标注
+    - 公有方法编写清晰的 docstring
 
-3. Documentation Updates
-    - Update relevant docstrings
-    - Modify README if introducing new features
-    - Add example configs if adding new settings
+3. 更新文档
+    - 补充或修正文档字符串
+    - 新功能请更新 README/USAGE
+    - 新配置项应提供示例
 
-## 🧑‍💻 Coding Standards
-Python Style
- - Follow Google Python Style Guide
- - Maximum line length: 88 characters
- - Use f-strings over .format()
+## 🧑‍💻 代码规范
+Python 风格：
+ - 遵循 Google Python Style Guide
+ - 单行最长 88 字符
+ - 统一使用 f-string
 
-### Type Hints Example
+### 类型标注示例
 ```python
 def recognize_faces(
-    self, 
+    self,
     faces: List[Face]
 ) -> List[Tuple[Face, Optional[KnownFace], float]]:
-    """Recognize faces against known database.
-    
+    """在人脸库中识别传入的人脸。
+
     Args:
-        faces: List of detected Face objects
-        
+        faces: 经过检测的人脸列表。
+
     Returns:
-        List of tuples containing:
-        - Original face
-        - Matched KnownFace (or None)
-        - Confidence score
+        包含以下元素的元组列表：
+        - 原始人脸对象
+        - 匹配到的已知人脸（或 None）
+        - 置信度分数
     """
 ```
 
-### Logging Standards
+### 日志规范
 ```python
-logger.debug("Processing frame %s", frame_id)  # Detailed debugging
-logger.info("Camera %d started", cam_id)      # Important events
-logger.warning("Low confidence: %.2f", score) # Potential issues
-logger.error("Failed to save screenshot")     # Recoverable errors
-logger.critical("DB connection lost")         # Critical failures
+logger.debug("Processing frame %s", frame_id)  # 详细调试信息
+logger.info("Camera %d started", cam_id)      # 关键事件
+logger.warning("Low confidence: %.2f", score) # 潜在问题
+logger.error("Failed to save screenshot")     # 可恢复错误
+logger.critical("DB connection lost")         # 致命错误
 ```
 
-## 🐛 Issue Reporting
-Bug Report Template
+## 🐛 问题报告
+Bug 提交模板：
 ```markdown
-**Description**
-Clear explanation of the bug
+**描述**
+清晰说明问题现象
 
-**Reproduction Steps**
-1. Start the application with...
-2. Navigate to...
-3. Observe...
+**复现步骤**
+1. 启动应用，使用...
+2. 进入...
+3. 观察...
 
-**Expected Behavior**
-What should happen
+**期望行为**
+应该出现什么结果
 
-**Actual Behavior**
-What actually happens
+**实际行为**
+当前发生了什么
 
-**Environment**
-- OS: [e.g. Windows 10]
-- Python Version: [e.g. 3.9.7]
-- GPU: [e.g. NVIDIA RTX 3080]
-
-**Screenshots/Logs**
-2025-05-20 14:12:08.012 | ERROR | module:line | Error message
-
-**Additional Context**
-Any other relevant information
+**日志/截图**
+如有请附上
 ```
 
-## 🌟 Feature Requests
-1. Check existing issues for duplicates
-2. Use the template
-    ```markdown
-    **Is your feature request related to a problem?**
-    A clear description of what the problem is
+## ✅ 提交前检查
+- 通过现有测试或添加新的测试用例
+- 运行 `pre-commit run --all-files`
+- 变更覆盖率不降低（如有测试）
+- 更新相关文档与示例
 
-    **Describe the solution you'd like**
-    Detailed explanation of proposed solution
+## 📮 提交与合并
+1. 提交信息应简洁描述改动：
+   ```bash
+   git commit -m "Fix: adjust recognition threshold logic"
+   ```
+2. 推送分支并创建 Pull Request，说明变更动机、影响范围与测试结果。
+3. 审核通过后合并；若有需要，请按反馈修改并重新提交。
 
-    **Describe alternatives considered**
-    Other approaches you've considered
-
-    **Additional context**
-    Any other context or screenshots
-    ```
-    
-## 🏆 Recognition
-Great contributions will be:
- - Featured in release notes
- - Added to CONTRIBUTORS.md
- - Eligible for "Contributor of the Month"
-
-We appreciate your contributions! For questions, join our [Discord](https://discord.gg/HDth6PfCnp) community or open a discussion.
+感谢每一位贡献者的付出！
